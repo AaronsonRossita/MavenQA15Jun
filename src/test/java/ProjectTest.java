@@ -1,10 +1,13 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class ProjectTest {
+
 
     @BeforeClass
     public static void setupClass(){
@@ -46,6 +49,7 @@ public class ProjectTest {
         WebDriver driver = new ChromeDriver();
         driver.get(Helper.GOOGLEURL);
         Thread.sleep(2000);
+//        driver.get(Helper.GITHUBURL);
         driver.navigate().to(Helper.GITHUBURL);
         Thread.sleep(2000);
         driver.navigate().back();
@@ -67,6 +71,22 @@ public class ProjectTest {
         driver.manage().window().maximize();
         Thread.sleep(3000);
         driver.quit();
+    }
+
+    @Test
+    public void testSeven() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.SAUCE);
+
+        WebElement loginField = driver.findElement(By.id(Helper.USERNAMEID));
+        WebElement passwordField = driver.findElement(By.id(Helper.PASSWORDID));
+        WebElement loginBtn = driver.findElement(By.id(Helper.LOGINBTNID));
+
+        loginField.sendKeys(Helper.STANDARTUSER);
+        Thread.sleep(3000);
+        passwordField.sendKeys(Helper.PASSWORD);
+        Thread.sleep(3000);
+        loginBtn.click();
     }
 
 }
