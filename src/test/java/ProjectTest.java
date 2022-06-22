@@ -74,7 +74,28 @@ public class ProjectTest {
     }
 
     @Test
-    public void testSeven() throws InterruptedException {
+    public void testSeven(){
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.SAUCE);
+
+        WebElement loginField = driver.findElement(By.id(Helper.USERNAMEID));
+        WebElement passwordField = driver.findElement(By.id(Helper.PASSWORDID));
+
+        loginField.sendKeys(Helper.STANDARTUSER);
+        passwordField.sendKeys(Helper.PASSWORD);
+    }
+
+    @Test
+    public void testEight(){
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.SAUCE);
+
+        WebElement loginBtn = driver.findElement(By.id(Helper.LOGINBTNID));
+        loginBtn.click();
+    }
+
+    @Test
+    public void testNine() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.get(Helper.SAUCE);
 
@@ -87,6 +108,27 @@ public class ProjectTest {
         passwordField.sendKeys(Helper.PASSWORD);
         Thread.sleep(3000);
         loginBtn.click();
+    }
+
+    @Test
+    public void testTen() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.SAUCE);
+
+        WebElement loginField = driver.findElement(By.id(Helper.USERNAMEID));
+        WebElement passwordField = driver.findElement(By.id(Helper.PASSWORDID));
+        WebElement loginBtn = driver.findElement(By.id(Helper.LOGINBTNID));
+
+        Thread.sleep(3000);
+
+        loginField.sendKeys(Helper.LOCKEDOUTUSER);
+        passwordField.sendKeys(Helper.PASSWORD);
+        loginBtn.click();
+
+        Thread.sleep(3000);
+
+        loginField.clear();
+        passwordField.clear();
     }
 
 }
