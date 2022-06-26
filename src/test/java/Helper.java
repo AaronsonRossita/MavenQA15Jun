@@ -14,4 +14,8 @@ public class Helper {
     public static final String STANDARTUSER = "standard_user";
     public static final String LOCKEDOUTUSER = "locked_out_user";
 
+    public static final String BLAHFOLDER = "/Users/aaronsonrossita/Desktop/blah/";
+    public static final String JPG = ".jpg";
+
+
 }
