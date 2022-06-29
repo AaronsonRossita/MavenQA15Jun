@@ -13,9 +13,15 @@ public class Helper {
     public static final String PASSWORD = "secret_sauce";
     public static final String STANDARTUSER = "standard_user";
     public static final String LOCKEDOUTUSER = "locked_out_user";
+    public static final String[] USERNAMES = {"standard_user","locked_out_user","problem_user","performance_glitch_user"};
 
     public static final String BLAHFOLDER = "/Users/aaronsonrossita/Desktop/blah/";
     public static final String JPG = ".jpg";
+
+//    -------------------------------------    -------------------------------------
+    public static final String INTERNETURL = "https://the-internet.herokuapp.com/dropdown";
+
+    public static final String DROPDOWNID = "dropdown";
 
 
 }

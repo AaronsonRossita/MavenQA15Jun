@@ -5,32 +5,17 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        //                0     1     2
+        String[] arr = {"abc","def","ghi"};
 
-        int x = 8;
-        double y = 2.7999;
-
-        double y1 = x; // 8.0
-        int x1 = (int)y;
-
-        File file = new File("newFile.txt");
-        file.createNewFile();
-
-        print("3.0");
-
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(i);
+            System.out.println(arr[i]);
+        }
 
     }
 
-    public static void print (int x){
-        System.out.println(x);
-    }
 
-    public static void print (double x){
-        System.out.println(x);
-    }
-
-    public static void print (String x){
-        System.out.println(x);
-    }
 
 
 }

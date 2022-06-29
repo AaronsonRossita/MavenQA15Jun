@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -196,6 +197,47 @@ public class ProjectTest {
         FileUtils.copyFile(file,new File(Helper.BLAHFOLDER + "screenshot2" + Helper.JPG));
 
         driver.quit();
+    }
+
+    @Test
+    public void testFourteen() throws IOException {
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.SAUCE);
+
+        for (int i = 0; i < Helper.USERNAMES.length; i++) { // 0 1 2 3
+            WebElement loginField = driver.findElement(By.id(Helper.USERNAMEID));
+            WebElement passwordField = driver.findElement(By.id(Helper.PASSWORDID));
+            WebElement loginBtn = driver.findElement(By.id(Helper.LOGINBTNID));
+
+            loginField.sendKeys(Helper.USERNAMES[i]);
+            passwordField.sendKeys(Helper.PASSWORD);
+            loginBtn.click();
+
+            File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(file,new File(Helper.BLAHFOLDER + "screen" + i + Helper.JPG));
+
+            driver.navigate().to(Helper.SAUCE);
+        }
+        driver.quit();
+    }
+
+    @Test
+    public void testFifteen() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.INTERNETURL);
+        WebElement element = driver.findElement(By.id(Helper.DROPDOWNID));
+        Select dropdown = new Select(element);
+        dropdown.selectByIndex(1);
+    }
+
+    @Test
+    public void testSixteen(){
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.SAUCE);
+
+//        WebElement loginField = driver.findElement(By.cssSelector("#user-name"));
+        WebElement loginField = driver.findElement(By.xpath("//*[@id=\"user-name\"]"));
+        loginField.sendKeys("blah");
     }
 
 }
