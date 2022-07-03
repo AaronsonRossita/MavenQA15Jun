@@ -3,6 +3,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -239,5 +240,43 @@ public class ProjectTest {
         WebElement loginField = driver.findElement(By.xpath("//*[@id=\"user-name\"]"));
         loginField.sendKeys("blah");
     }
+
+    @Test
+    public void testSeventeen(){
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.SAUCE);
+
+        WebElement loginField = driver.findElement(By.id(Helper.USERNAMEID));
+        WebElement passwordField = driver.findElement(By.id(Helper.PASSWORDID));
+        WebElement loginBtn = driver.findElement(By.id(Helper.LOGINBTNID));
+
+        loginField.sendKeys(Helper.LOCKEDOUTUSER);
+        passwordField.sendKeys(Helper.PASSWORD);
+        loginBtn.click();
+
+        String newUrl = driver.getCurrentUrl();
+
+//        Assert.assertEquals(newUrl,"https://www.saucedemo.com/inventory.html");
+    }
+
+    @Test
+    public void testEighteen() throws IOException {
+        WebDriver driver = new ChromeDriver();
+        driver.get(Helper.SAUCE);
+//        WebElement loginField = Helper.findElement(driver,Helper.USERNAMEID);
+//        WebElement passwordField = Helper.findElement(driver,Helper.PASSWORDID);
+        WebElement[] elements = Helper.findElements(driver);
+//        elements[0]  loginField
+//        elements[1]  passwordField
+//        elements[2]  loginBtn
+        Helper.screenShot(driver,"before");
+        elements[0].sendKeys(Helper.STANDARTUSER);
+        elements[1].sendKeys(Helper.PASSWORD);
+        elements[2].click();
+        Helper.screenShot(driver,"after");
+        driver.quit();
+
+    }
+
 
 }
